@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <ul id="nav">
+        <li>
+            Resources
+            <ul>
+                <li><a href="http://groups.google.com/group/jquery-en">Google Group</a></li>
+                <li><a href="http://stackoverflow.com">Stack Overflow</a></li>
+                <li><a href="http://delicious.com/rdmey/jquery-class">Delicious Bookmarks</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="module" id="blog">
+        <h1 class="h1">Test</h1>
+        <h2>Blog</h2>
+        <ul>
+            <li>
+                <h3><a href="blog.html#post1">Blog post 1</a></h3>
+                <p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </li>
+            <li>
+                <h3><a href="blog.html#post2">Blog post 2</a></h3>
+                <p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </li>
+            <li>
+                <h3><a href="blog.html#post3">Blog post 3</a></h3>
+                <p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </li>
+        </ul>
+    </div>
+
+
+
+</body>
+</html>
+<script src="Scripts/jquery-2.1.3.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log('el documento está preparado');
+        var $divs = $('ul li').eq(2);
+
+//        $('#content')
+//.find('h3')
+//.eq(1)
+//.html('nuevo texto para el tercer elemento h3')
+//.end() // reestablece la selección a todos los elementos h3 en #content
+//.eq(0)
+//.html('nuevo texto para el primer elemento h3');
+        $('h1').html('Hola Mundo');
+        $('h1').css({
+            'fontSize': '100px',
+            'color': 'red'
+        });
+        var $myNewElement = $('<p>Hola nuevo elemento</p>');
+        $myNewElement.appendTo('#content');
+        $myNewElement.insertAfter('ul:last'); // eliminará al elemento <p>
+        // existente en #content
+        //$('ul').last().after($myNewElement.clone()); // clonar al elemento <p>
+        // para tener las dos versiones
+    });
+</script>

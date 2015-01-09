@@ -1,0 +1,6 @@
+c:\users\jfuentes\documents\visual studio 2013\Projects\TallerAjax_2015\TallerAjax_2015\bin\TallerAjax_2015.dll.config
+c:\users\jfuentes\documents\visual studio 2013\Projects\TallerAjax_2015\TallerAjax_2015\bin\TallerAjax_2015.dll
+c:\users\jfuentes\documents\visual studio 2013\Projects\TallerAjax_2015\TallerAjax_2015\bin\TallerAjax_2015.pdb
+c:\users\jfuentes\documents\visual studio 2013\Projects\TallerAjax_2015\TallerAjax_2015\obj\Debug\TallerAjax_2015.dll
+c:\users\jfuentes\documents\visual studio 2013\Projects\TallerAjax_2015\TallerAjax_2015\obj\Debug\TallerAjax_2015.pdb
+C:\Users\jfuentes\documents\visual studio 2013\Projects\TallerAjax_2015\TallerAjax_2015\obj\Debug\TallerAjax_2015.csprojResolveAssemblyReference.cache
