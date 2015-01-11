@@ -2,7 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>jQuery Fundamentals :: Home</title>
+    <link href="css/reset.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+    <style>
+        #blog p.excerpt {
+            display: none;
+        }
+    </style>
+
 </head>
 <body>
     <div id="header">
@@ -45,16 +54,16 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </li>
         </ul>
-        <ul id="myList">
+      <ul id="myList">
             <li>N°1</li>
             <li id="listItem_2" class="bar">N°2</li>
             <li id="myListItem">N°3</li>
             <li>N°4</li>
-            <li class="current bar">N°5</li>
+            <li class="current">N°5</li>
             <li>N°6</li>
             <li>N°7</li>
         </ul>
-        <div class="module" id="blog">
+          <div class="module" id="blog">
             <h2>Blog</h2>
             <ul>
                 <li>
@@ -78,10 +87,10 @@
                 <ul>
                     <li>
                         <select name="day">
-                            <option value="" selected>Select</option>
-                            <option value="monday">Monday</option>
-                            <option value="tuesday">Tuesday</option>
-                            <option value="friday">Friday</option>
+                            <option value="" selected>Seleccionado</option>
+                            <option value="monday">Lunes</option>
+                            <option value="tuesday">Martes</option>
+                            <option value="friday">Miercoles</option>
                         </select>
                     </li>
                     <li class="buttons">
@@ -138,8 +147,45 @@
         console.log($img.attr('alt'));
     });
 
-    $('input[name="q"]').closest('form').addClass('foo');
+    //$('input[name="q"]').closest('form').addClass('foo');
 
+    //Seleccionar el ítem que posee la clase “current” dentro de la lista #myList y remover dicha clase en el elemento; luego añadir la clase “current” al siguiente ítem de la lista.
+    $('li.current')
+	.removeClass('current')
+	.next()
+		.addClass('current');
 
+    //Seleccionar el elemento select dentro de #specials; luego dirigirse hacia el botón submit.
+    $('#specials select').parent().next().find('input.input_submit');
 
+    //Seleccionar el primer ítem de la lista en el elemento #slideshow; añadirle la clase “current” al mismo y luego añadir la clase “disabled” a los elementos hermanos
+    $('#slideshow li:first')
+	.addClass('azul')
+	.siblings()
+		.addClass('rojo');
+
+    //***MANIPULACION
+    //Añadir 5 nuevos ítems al final de la lista desordenada appendto #myList. Ayuda:
+    var $ul = $('#myList');
+    for (i = 0; i < 5; i++) {
+        $('<li>List item ' + i + '</li>').appendTo($ul);
+    }
+
+    //Remover los ítems impares de la lista
+    $('#myList li:odd').remove();
+
+    //Añadir otro elemento h2 y otro párrafo al último div.module.
+    $('div.module')
+	.append('<h2>new heading</h2>')
+	.append('<p>new paragraph</p>');
+
+    //Añadir otra opción al elemento select; darle a la opción añadida el valor “Wednesday”.
+    $('select').append('<option value="Sabado">Sabado</option>');
+
+   //Añadir un nuevo div.module a la página después del último; luego añadir una copia de una de las imágenes existentes dentro del nuevo div.
+    var $img = $('img:first');
+    var $newDiv = $('<div class="module"/>');
+
+    $newDiv.append($img.clone()).insertAfter('div.module:last');
+        
 </script>
