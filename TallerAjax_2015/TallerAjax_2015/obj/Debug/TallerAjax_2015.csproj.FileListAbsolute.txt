@@ -10,3 +10,9 @@ C:\Users\Javier\Documents\GitHub\Taller\TallerAjax_2015\TallerAjax_2015\bin\Tall
 C:\Users\Javier\Documents\GitHub\Taller\TallerAjax_2015\TallerAjax_2015\obj\Debug\TallerAjax_2015.csprojResolveAssemblyReference.cache
 C:\Users\Javier\Documents\GitHub\Taller\TallerAjax_2015\TallerAjax_2015\obj\Debug\TallerAjax_2015.dll
 C:\Users\Javier\Documents\GitHub\Taller\TallerAjax_2015\TallerAjax_2015\obj\Debug\TallerAjax_2015.pdb
+C:\Users\jfuentes\Documents\GitHub\Taller\TallerAjax_2015\TallerAjax_2015\bin\TallerAjax_2015.dll.config
+C:\Users\jfuentes\Documents\GitHub\Taller\TallerAjax_2015\TallerAjax_2015\bin\TallerAjax_2015.dll
+C:\Users\jfuentes\Documents\GitHub\Taller\TallerAjax_2015\TallerAjax_2015\bin\TallerAjax_2015.pdb
+C:\Users\jfuentes\Documents\GitHub\Taller\TallerAjax_2015\TallerAjax_2015\obj\Debug\TallerAjax_2015.csprojResolveAssemblyReference.cache
+C:\Users\jfuentes\Documents\GitHub\Taller\TallerAjax_2015\TallerAjax_2015\obj\Debug\TallerAjax_2015.dll
+C:\Users\jfuentes\Documents\GitHub\Taller\TallerAjax_2015\TallerAjax_2015\obj\Debug\TallerAjax_2015.pdb
