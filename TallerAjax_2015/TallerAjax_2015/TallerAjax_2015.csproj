@@ -68,6 +68,7 @@
     <Content Include="css\reset.css" />
     <Content Include="css\sandbox.css" />
     <Content Include="css\style.css" />
+    <Content Include="Eventos.html" />
     <Content Include="images\bg-staff.png" />
     <Content Include="images\bread.jpg" />
     <Content Include="images\curry.jpg" />

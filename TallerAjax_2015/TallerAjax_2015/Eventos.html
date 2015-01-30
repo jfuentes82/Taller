@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>jQuery Fundamentals :: Home</title>
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
+    <link href="css/sandbox.css" rel="stylesheet" />
+    <style>
+        #blog p.excerpt {
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="header">
+        <div id="logo" rel="logo"><a href="index.html">jQuery Fundamentals</a></div>
+        <ul id="nav">
+            <li class="selected"><a href="http://docs.jquery.com">jQuery Docs</a></li>
+            <li><a href="sandbox.html">Sandbox</a></li>
+            <li>
+                Resources
+                <ul>
+                    <li><a href="http://groups.google.com/group/jquery-en">Google Group</a></li>
+                    <li><a href="http://stackoverflow.com">Stack Overflow</a></li>
+                    <li><a href="http://delicious.com/rdmey/jquery-class">Delicious Bookmarks</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="main">
+        <form id="search">
+            <label for="q">Enter search term</label>
+            <input type="text" name="q" class="input_text" />
+            <input type="submit" value="Go" />
+        </form>
+        <h1>Eat here.</h1>
+        <p>Lorem ipsum dolor sit amet, <a href="foo.html">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <ul id="slideshow">
+            <li>
+                <h2 rel="yummy fruit!">Fruit</h2>
+                <img src="images/fruit.jpg" alt="fruit" />
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </li>
+            <li>
+                <h2>Vegetables</h2>
+                <img src="images/vegetable.jpg" alt="vegetables" />
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </li>
+            <li>
+                <h2>Bread</h2>
+                <img src="images/bread.jpg" alt="bread" />
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </li>
+        </ul>
+        <ul id="myList">
+            <li>N°1</li>
+            <li id="listItem_2" class="bar">N°2</li>
+            <li id="myListItem">N°3</li>
+            <li>N°4</li>
+            <li class="current">N°5</li>
+            <li>N°6</li>
+            <li>N°7</li>
+        </ul>
+        <div class="module" id="blog">
+            <h2>Blog</h2>
+            <ul>
+                <li>
+                    <h3><a href="blog.html#post1">Blog post 1</a></h3>
+                    <p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </li>
+                <li>
+                    <h3><a href="blog.html#post2">Blog post 2</a></h3>
+                    <p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </li>
+                <li>
+                    <h3><a href="blog.html#post3">Blog post 3</a></h3>
+                    <p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </li>
+            </ul>
+        </div>
+        <div class="module" id="specials">
+            <h2>Specials</h2>
+            <p>Choose the day of the week to see the specials:</p>
+            <form action="specials.html" method="get">
+                <ul>
+                    <li>
+                        <select name="day">
+                            <option value="" selected>Seleccionado</option>
+                            <option value="monday">Lunes</option>
+                            <option value="tuesday">Martes</option>
+                            <option value="friday">Miercoles</option>
+                        </select>
+                    </li>
+                    <li class="buttons">
+                        <input type="submit" class="input_submit" value="Go" />
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <table id="fruits">
+            <thead>
+                <tr>
+                    <th>Apples</th>
+                    <th>Oranges</th>
+                    <th>Pears</th>
+                    <th>Nectarines</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td id="myTableCell">2</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>6</td>
+                    <td>4</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>7</td>
+                    <td>5</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>30</td>
+                    <td>10</td>
+                    <td>100</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+<script src="Scripts/jquery-2.1.3.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        //Establecer el valor del elemento input igual al valor del elemento label
+        //Añadir la clase “hint” al elemento input.
+        //Remover el elemento label.
+        //Vincular un evento focus en el input para remover el texto de sugerencia y la clase “hint”.
+        //Vincular un evento blur en el input para restaurar el texto de sugerencia y la clase “hint” en caso que no se haya ingresado algún texto.
+        //var $search = $('#search');
+        //var $input = $search.find('input.input_text');
+        //var hint = $search.find('label').remove().text();
+
+        //$input
+        //    .val(hint)
+        //    .addClass('hint')
+        //    .on('focus', function () {
+        //        $input.val('').removeClass('hint');
+        //    })
+        //    .on('blur', function () {
+        //        if (!$.trim($input.val())) {
+        //            $input.val(hint).addClass('hint');
+        //        }
+        //    });
+
+
+        //Oculto los dov module
+        var $modules = $('div.module').hide();
+
+        //Crear una lista desordenada antes del primer div.module para utilizar como pestañas.
+        var $nav = $('<ul/>')
+		.addClass('tabs')
+		.insertBefore($modules.eq(0));
+
+        $modules.each(function () {
+            var $module = $(this);
+            var $title = $module.find('h2');
+
+            var $tab = $('<li>' + $title.text() + '</li>')
+                .appendTo($nav);
+
+            $tab.click(function () {
+                $tab.addClass('current').siblings().removeClass('current');
+                $module.show().siblings('.module').hide();
+            });
+        });
+
+        $modules.eq(0).show();
+        $nav.find('li:first').addClass('current');
+
+
+
+    });
+
+</script>
+
