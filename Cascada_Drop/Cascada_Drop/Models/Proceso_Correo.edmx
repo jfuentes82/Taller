@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TallerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="TallerModelStoreContainer">
+          <EntitySet Name="Adjunto_Correo" EntityType="TallerModel.Store.Adjunto_Correo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Proceso_Correo" EntityType="TallerModel.Store.Proceso_Correo" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Adjunto_Correo_Proceso_Correo" Association="TallerModel.Store.FK_Adjunto_Correo_Proceso_Correo">
+            <End Role="Proceso_Correo" EntitySet="Proceso_Correo" />
+            <End Role="Adjunto_Correo" EntitySet="Adjunto_Correo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Adjunto_Correo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Correo_ID" Type="int" />
+          <Property Name="URL" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Proceso_Correo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Asunto" Type="nchar" MaxLength="10" />
+          <Property Name="Campo" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Adjunto_Correo_Proceso_Correo">
+          <End Role="Proceso_Correo" Type="TallerModel.Store.Proceso_Correo" Multiplicity="0..1" />
+          <End Role="Adjunto_Correo" Type="TallerModel.Store.Adjunto_Correo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proceso_Correo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Adjunto_Correo">
+              <PropertyRef Name="Correo_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TallerModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TallerEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Adjunto_Correo" EntityType="TallerModel.Adjunto_Correo" />
+          <EntitySet Name="Proceso_Correo" EntityType="TallerModel.Proceso_Correo" />
+          <AssociationSet Name="FK_Adjunto_Correo_Proceso_Correo" Association="TallerModel.FK_Adjunto_Correo_Proceso_Correo">
+            <End Role="Proceso_Correo" EntitySet="Proceso_Correo" />
+            <End Role="Adjunto_Correo" EntitySet="Adjunto_Correo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Adjunto_Correo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Correo_ID" Type="Int32" />
+          <Property Name="URL" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="Proceso_Correo" Relationship="TallerModel.FK_Adjunto_Correo_Proceso_Correo" FromRole="Adjunto_Correo" ToRole="Proceso_Correo" />
+        </EntityType>
+        <EntityType Name="Proceso_Correo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Asunto" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Campo" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="Adjunto_Correo" Relationship="TallerModel.FK_Adjunto_Correo_Proceso_Correo" FromRole="Proceso_Correo" ToRole="Adjunto_Correo" />
+        </EntityType>
+        <Association Name="FK_Adjunto_Correo_Proceso_Correo">
+          <End Role="Proceso_Correo" Type="TallerModel.Proceso_Correo" Multiplicity="0..1" />
+          <End Role="Adjunto_Correo" Type="TallerModel.Adjunto_Correo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proceso_Correo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Adjunto_Correo">
+              <PropertyRef Name="Correo_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TallerModelStoreContainer" CdmEntityContainer="TallerEntities">
+          <EntitySetMapping Name="Adjunto_Correo">
+            <EntityTypeMapping TypeName="TallerModel.Adjunto_Correo">
+              <MappingFragment StoreEntitySet="Adjunto_Correo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Correo_ID" ColumnName="Correo_ID" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proceso_Correo">
+            <EntityTypeMapping TypeName="TallerModel.Proceso_Correo">
+              <MappingFragment StoreEntitySet="Proceso_Correo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+                <ScalarProperty Name="Campo" ColumnName="Campo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,37 @@
+﻿@model ManagingMultijQueryForm.Models.SubCategory
+
+@using (Ajax.BeginForm(new AjaxOptions { OnSuccess = "closeDialog();updateSection();", OnFailure = "onAjaxFailure" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>SubCategory</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryID)
+        </div>
+        <div class="editor-field">
+            <input type="text" value="@(Model != null ? Model.Category.Name : "")" disabled="disabled" />
+            @Html.HiddenFor(model => model.CategoryID)
+            @Html.ValidationMessageFor(model => model.CategoryID)
+            @Html.ImageActionLink(Url.Content("~/Content/Images/Icons/search.png"), "Browse Category", "List", "Category", null, new { @class = "dialog", @title = "Category", }, new { border = 0 })
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+    <script>
+        $(function () {
+            $("img").button();
+        });
+    </script>
+}

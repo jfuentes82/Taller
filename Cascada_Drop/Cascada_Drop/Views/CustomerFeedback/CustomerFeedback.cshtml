@@ -1,0 +1,243 @@
+﻿@{
+    ViewBag.Title = "CustomerFeedback";
+}
+
+<h2>CustomerFeedback</h2>
+<style type="text/css">
+    .dropdown1 select {
+        border: 0px;
+        width: 150px;
+        background: none;
+    }
+
+
+    .dropdown1 {
+        border: 2px solid #7d6754;
+        border-radius: 5px;
+        padding: 3px;
+        -webkit-appearance: none;
+        background-image: url('http://maxgxl.com/max4u/images/selectArrowDown.png');
+        background-position: 225px;
+        background-repeat: no-repeat;
+        text-indent: 0.01px; /*In Firefox*/
+        text-overflow: ''; /*In Firefox*/
+        width: 150px;
+    }
+</style>
+
+@*<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.8.24.js"></script>*@
+
+@*<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">*@
+
+@*<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">*@
+
+
+@*<script type="text/javascript">
+    //var jj = "adsadad";
+
+    //$(function () {
+    //    var jj = "adsadad";
+        //$("#dialog").dialog({
+        //    autoOpen: false,
+        //    show: {
+        //        effect: "blind",
+        //        duration: 1000
+        //    },
+        //    hide: {
+        //        effect: "explode",
+        //        duration: 1000
+        //    }
+        //});
+
+        //$("#opener").click(function () {
+        //    $("#dialog").dialog("open");
+        //});
+    });
+
+</script>*@
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        //Dropdownlist Selectedchange event
+        $("#Country").change(function () {
+            $("#State").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetStates")', // we are calling json method
+                dataType: 'json',
+                data: { id: $("#Country").val() },
+                success: function (states) {
+                    // states contains the JSON formatted list
+                    // of states passed from the controller
+                    $.each(states, function (i, state) {
+                        $("#State").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                    }); // here we are adding option for States
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve states.' + ex);
+                }
+            });
+            return false;
+        })
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //Dropdownlist Selectedchange event
+        $("#State").change(function () {
+            $("#city").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetCity")',
+                dataType: 'json',
+                data: { id: $("#State").val() },
+                success: function (citys) {
+                    // states contains the JSON formatted list
+                    // of states passed from the controller
+                    $.each(citys, function (i, city) {
+                        $("#city").append('<option value="'
+      + city.Value + '">'
+      + city.Text + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve states.' + ex);
+                }
+            });
+            return false;
+        })
+
+        $("#dialog").dialog({
+            autoOpen: false,
+            show: {
+                effect: "blind",
+                duration: 1000
+            },
+            hide: {
+                effect: "explode",
+                duration: 1000
+            }
+        });
+
+        $("#opener").click(function () {
+            $("#dialog").dialog("open");
+        });
+
+
+    });*@
+@*</script>*@
+
+@using (Html.BeginForm("Index", "CustomerFeedbackController", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{ 
+     
+     
+@*<div class="editor-label">
+        <br />
+        <div style="color: Purple;">
+            @Html.Label("Select County")
+        </div>
+        <div class="editor-field">
+            @if (ViewData.ContainsKey("Country"))
+            {
+                @Html.DropDownList("Country", ViewData["country"] as List<SelectListItem>, new { style = "width:250px", @class = "dropdown1" })
+            }
+        </div>
+        <br />
+        <div style="color: Purple;">
+            @Html.Label("Select State", new { style = "width:250px" })
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("State", new SelectList(string.Empty, "Value", "Text"), "Please select a State", new { style = "width:250px", @class = "dropdown1" })
+        </div>
+        <br />
+        <div style="color: Purple;">
+            @Html.Label("Select City", new { style = "width:250px" })
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("city", new SelectList(string.Empty, "Value", "Text"), "Please select a city", new { style = "width:250px", @class = "dropdown1" })
+        </div>
+        <br />
+        <input id="Submit1" type="submit" value="submit" />
+    </div>*@
+    <div id="dialog" title="Basic dialog">
+        <p>hola</p>
+    </div>
+    @Html.ActionLink("Editar","Hola",new {customerid=3},new{ @class="modalDlg",title="Hola a Todos"})
+    <button id="opener">Open Dialog</button>
+    
+}
+
+
+
+@section Scripts {
+    @* @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/datatable")*@
+
+
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    <script src="~/Scripts/jquery-ui-1.8.24.js"></script>
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //$("#dialog").dialog({
+            //    autoOpen: false,
+            //    buttons: {
+            //        'submit': function () {
+            //            var dlg = $(this);
+            //            $.ajax({
+            //                url: "/Home/Index",
+            //                type: 'POST',
+            //                data: $("#target").serialize(),
+            //                success: function (response) {
+            //                    //$(target).html(response);
+            //                    //dlg.dialog('close');
+            //                    //dlg.empty();
+            //                    //$("#ajaxResult").hide().html('Record saved').fadeIn(300, function(){
+            //                    //    var e = this;
+            //                    //    setTimeout(function() { $(e).fadeOut(400); }, 2500 );
+            //                    //});
+            //                },
+            //                error: function (xhr) {
+            //                    //if (xhr.status == 400) 
+            //                    //    dlg.html(xhr.responseText, xhr.status);     /* display validation errors in edit dialog */
+            //                    //else 
+            //                    //    displayError(xhr.responseText, xhr.status); /* display other errors in separate dialog */
+                                   
+            //                }
+            //            });
+            //        },
+            //        'Reset Search': function () {
+            //            Clearvalues();
+            //        }
+            //         ,
+            //        'Close': function () {
+            //            $(this).dialog('close');
+            //        }
+            //    },
+            //    show: {
+            //        effect: "blind",
+            //        duration: 1000
+            //    },
+            //    hide: {
+            //        effect: "clip",
+            //        duration: 1000
+            //    }
+            //});
+
+            //$("#opener").click(function () {
+            //    $("#dialog").dialog("open");
+            //});
+        });
+    </script>
+}

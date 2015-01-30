@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Test</h2>
+@using (Html.BeginForm("Index", "CustomerFeedbackController", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{ 
+
+    <div id="dialog" title="Basic dialog">
+        <p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+        <input type="button" value="Button" />
+    </div>
+ 
+    <button id="opener">Open Dialog</button>
+
+
+ 
+}

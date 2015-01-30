@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ManagingMultijQueryForm.Models.SubCategory>
+
+@using (Ajax.BeginForm(new AjaxOptions { OnSuccess = "updateSearchContainer" }))
+{
+    <p>
+        @Html.TextBox("s")
+        <input type="submit" value="Search" />
+        @Html.ActionLink("Create New", "Add", "SubCategory", null, new { @class = "dialog ahref", @title = "Add Sub Category" })
+    </p>
+}
+@{
+    var grid = new WebGrid(
+        Model, rowsPerPage: 10,
+        defaultSort: "Name",
+        ajaxUpdateContainerId: "subcategoryList");
+}
+
+<div id="subcategoryList">
+
+    @grid.GetHtml(
+            fillEmptyRows: false,
+            mode: WebGridPagerModes.All,
+
+            tableStyle: "webgrid-table",
+            headerStyle: "webgrid-header",
+            footerStyle: "webgrid-footer",
+            alternatingRowStyle: "webgrid-alternating-row",
+            rowStyle: "webgrid-row-style",
+
+            columns: grid.Columns
+            (
+                grid.Column("", format: (a) => @Ajax.ActionLink("Select", "Get", "SubCategory", new { @id = a.SubCategoryID }, new AjaxOptions { OnSuccess = "updateContainer" }), header: ""),
+                grid.Column("Name", header: "Name " + WebGridSortHelper.SortDirection(null, ref grid, "Name")),
+                grid.Column("Category.Name", header: "Category " + WebGridSortHelper.SortDirection(null, ref grid, "Category.Name")),
+                grid.Column("", format: (a) => @Html.ActionLink("Delete", "Delete", "SubCategory", new { @id = a.SubCategoryID }, new { @class = "delete", @title = "Delete" }), header: "")
+            )
+        )
+</div>
+
+<script>
+    $("a.ahref, input[type='submit']").button();
+</script>

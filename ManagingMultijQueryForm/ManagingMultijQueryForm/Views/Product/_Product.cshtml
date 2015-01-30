@@ -1,0 +1,49 @@
+﻿@model ManagingMultijQueryForm.Models.Product
+
+@using (Ajax.BeginForm(new AjaxOptions { OnSuccess = "closeDialog();updateSection();", OnFailure = "onAjaxFailure" }))
+{
+    @Html.ValidationSummary(true)
+    if (Model != null)
+    {
+        @Html.HiddenFor(m => m.ProductID)
+    }
+    
+    <fieldset>
+        <legend>Product</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SubCategoryID)
+        </div>
+        <div class="editor-field">
+            <input type="text" disabled="disabled" value="@(Model != null ? Model.SubCategory.Name : "")" />
+            @Html.HiddenFor(model => model.SubCategoryID)
+            @Html.ValidationMessageFor(model => model.SubCategoryID)
+            @Html.ImageActionLink(Url.Content("~/Content/Images/Icons/search.png"), "Browse Sub Category", "List", "SubCategory", null, new { @class = "dialog", @title = "Sub Category" }, new { border = 0 })
+        </div>
+
+        <p>
+            <input type="submit" value="@(Model != null ? "Update" : "Create")" />
+        </p>
+    </fieldset>
+    <script>
+        $(function () {
+            $("img").button();
+        });
+    </script>
+}

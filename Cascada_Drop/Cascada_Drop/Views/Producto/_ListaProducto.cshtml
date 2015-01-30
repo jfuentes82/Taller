@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Cascada_Drop.Models.Producto>
+ 
+@{
+    var grid = new WebGrid(
+        Model, rowsPerPage: 10,
+        defaultSort: "Nombre", ajaxUpdateContainerId: "product-grid");
+}
+ 
+@grid.GetHtml(
+            fillEmptyRows: false,
+            mode: WebGridPagerModes.All,
+ 
+            tableStyle: "webgrid-table",
+            headerStyle: "webgrid-header",
+            footerStyle: "webgrid-footer",
+            alternatingRowStyle: "webgrid-alternating-row",
+            rowStyle: "webgrid-row-style",
+ 
+            columns: grid.Columns
+            (
+                grid.Column("Nombre", header: "NOMBRE " + Helpers.WebGridSortHelper.SortDirection(null, ref grid, "Nombre")),
+                grid.Column("Descripcion", header: "DESCRIPCION " + Helpers.WebGridSortHelper.SortDirection(null, ref grid, "Descripcion"))
+                //grid.Column("SubCategory.Name", header: "SubCategory " + WebGridSortHelper.SortDirection(null, ref grid, "SubCategory.Name")),
+                //grid.Column("SubCategory.Category.Name", header: "Category " + WebGridSortHelper.SortDirection(null, ref grid, "SubCategory.Category.Name")),
+                //grid.Column("", format: (a) => @Html.ActionLink("Edit", "Edit", "Product", new { @id = a.ProductID }, new { @class = "dialog", @title = "Edit" }), header: ""),
+                //grid.Column("", format: (a) => @Html.ActionLink("Delete", "Delete", "Product", new { @id = a.ProductID }, new { @class = "delete", @title = "Delete" }), header: "")
+            )
+)

@@ -1,0 +1,22 @@
+﻿@model ManagingMultijQueryForm.Models.Category
+
+@using (Ajax.BeginForm(new AjaxOptions { OnSuccess = "closeDialog();updateSection();", OnFailure = "onAjaxFailure" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Category</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}

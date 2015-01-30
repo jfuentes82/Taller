@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ManagingMultijQueryForm.Models.Category>
+
+@using (Ajax.BeginForm(new AjaxOptions { OnSuccess = "updateSearchContainer" }))
+{
+    <p>
+        @Html.TextBox("s")
+        <input type="submit" value="Search" />
+        @Html.ActionLink("Create New", "Add", "Category", null, new { @class = "dialog ahref", @title = "Add Category" })
+    </p>
+}
+@{
+    var grid = new WebGrid(
+        Model, rowsPerPage: 5,
+        defaultSort: "Name",
+        ajaxUpdateContainerId: "categoryList");
+}
+
+<div id="categoryList">
+    @grid.GetHtml(
+            fillEmptyRows: false,
+            mode: WebGridPagerModes.All,
+
+            tableStyle: "webgrid-table",
+            headerStyle: "webgrid-header",
+            footerStyle: "webgrid-footer",
+            alternatingRowStyle: "webgrid-alternating-row",
+            rowStyle: "webgrid-row-style",
+
+            columns: grid.Columns
+            (
+                grid.Column("", format: (a) => @Ajax.ActionLink("Select", "Get", "Category", new { @id = a.CategoryID }, new AjaxOptions { OnSuccess = "updateContainer" }), header: ""),
+                grid.Column("Name", header: "Name " + WebGridSortHelper.SortDirection(null, ref grid, "Name")),
+                grid.Column("", format: (a) => @Html.ActionLink("Delete", "Delete", "Category", new { @id = a.CategoryID }, new { @class = "delete", @title = "Delete" }), header: "")
+            )
+        )
+</div>
+<script>
+    $("a.ahref, input[type='submit']").button();
+</script>
