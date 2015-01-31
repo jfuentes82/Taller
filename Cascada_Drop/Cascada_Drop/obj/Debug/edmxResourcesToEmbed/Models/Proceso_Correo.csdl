@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TallerModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TallerEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Adjunto_Correo" EntityType="TallerModel.Adjunto_Correo" />
+    <EntitySet Name="Proceso_Correo" EntityType="TallerModel.Proceso_Correo" />
+    <AssociationSet Name="FK_Adjunto_Correo_Proceso_Correo" Association="TallerModel.FK_Adjunto_Correo_Proceso_Correo">
+      <End Role="Proceso_Correo" EntitySet="Proceso_Correo" />
+      <End Role="Adjunto_Correo" EntitySet="Adjunto_Correo" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Adjunto_Correo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Correo_ID" Type="Int32" />
+    <Property Name="URL" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="Proceso_Correo" Relationship="TallerModel.FK_Adjunto_Correo_Proceso_Correo" FromRole="Adjunto_Correo" ToRole="Proceso_Correo" />
+  </EntityType>
+  <EntityType Name="Proceso_Correo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Asunto" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="Campo" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="Adjunto_Correo" Relationship="TallerModel.FK_Adjunto_Correo_Proceso_Correo" FromRole="Proceso_Correo" ToRole="Adjunto_Correo" />
+  </EntityType>
+  <Association Name="FK_Adjunto_Correo_Proceso_Correo">
+    <End Role="Proceso_Correo" Type="TallerModel.Proceso_Correo" Multiplicity="0..1" />
+    <End Role="Adjunto_Correo" Type="TallerModel.Adjunto_Correo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proceso_Correo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Adjunto_Correo">
+        <PropertyRef Name="Correo_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

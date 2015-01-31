@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TallerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="TallerModelStoreContainer">
+    <EntitySet Name="Adjunto_Correo" EntityType="TallerModel.Store.Adjunto_Correo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Proceso_Correo" EntityType="TallerModel.Store.Proceso_Correo" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Adjunto_Correo_Proceso_Correo" Association="TallerModel.Store.FK_Adjunto_Correo_Proceso_Correo">
+      <End Role="Proceso_Correo" EntitySet="Proceso_Correo" />
+      <End Role="Adjunto_Correo" EntitySet="Adjunto_Correo" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Adjunto_Correo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Correo_ID" Type="int" />
+    <Property Name="URL" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Proceso_Correo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Asunto" Type="nchar" MaxLength="10" />
+    <Property Name="Campo" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_Adjunto_Correo_Proceso_Correo">
+    <End Role="Proceso_Correo" Type="TallerModel.Store.Proceso_Correo" Multiplicity="0..1" />
+    <End Role="Adjunto_Correo" Type="TallerModel.Store.Adjunto_Correo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proceso_Correo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Adjunto_Correo">
+        <PropertyRef Name="Correo_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,59 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/GridStyle.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.4.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/app.js"></script>
+</head>
+<body>
+    <!-- this div is for custom message box-->
+    <!-- start -->
+    <div id="dialog" title="Alert message" style="display: none">
+        <div class="ui-dialog-content ui-widget-content">
+            <p>
+                <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0"></span>
+                <label id="lblMessage">
+                </label>
+            </p>
+        </div>
+    </div>
+    <!--  end -->
+
+    <div id="productList">
+       @* @using (Ajax.BeginForm("List", new AjaxOptions { }))
+        {
+            *@
+        <div>
+                @Html.ActionLink("Add Product", "Add", null, new { @class = "dialog button", @title = "Add Product" })
+
+                @Html.ActionLink("Chao", "Chao", null, new { @class = "dialog button", @title = "Add Product" })
+
+
+            </div>
+        @*
+            <div id="product-grid">
+
+            </div>
+                  
+        }*@
+    </div>
+    <script>
+        $(function () {
+
+            $("a.button").button();
+        });
+    </script>
+</body>
+</html>

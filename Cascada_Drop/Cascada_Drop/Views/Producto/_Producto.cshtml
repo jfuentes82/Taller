@@ -1,0 +1,49 @@
+﻿@model Cascada_Drop.Models.Producto
+
+@using (Ajax.BeginForm(new AjaxOptions { OnSuccess = "closeDialog();updateSection();", OnFailure = "onAjaxFailure" }))
+{
+    @Html.ValidationSummary(true)
+    if (Model != null)
+    {
+        @Html.HiddenFor(m => m.ProductID)
+    }
+    
+    <fieldset>
+        <legend>Product</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nombre)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nombre)
+            @Html.ValidationMessageFor(model => model.Nombre)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Descripcion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Descripcion)
+            @Html.ValidationMessageFor(model => model.Descripcion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SubCategoriaID)
+        </div>
+        <div class="editor-field">
+            <input type="text" disabled="disabled" value="@(Model != null ? Model.SubCategoria.Nombre : "")" />
+            @Html.HiddenFor(model => model.SubCategoriaID)
+            @Html.ValidationMessageFor(model => model.SubCategoriaID)
+           @* @Html.ImageActionLink(Url.Content("~/Content/Images/Icons/search.png"), "Browse Sub Category", "List", "SubCategory", null, new { @class = "dialog", @title = "Sub Category" }, new { border = 0 })*@
+        </div>
+
+        <p>
+            <input type="submit" value="@(Model != null ? "Update" : "Create")" />
+        </p>
+    </fieldset>
+    <script>
+        $(function () {
+            $("img").button();
+        });
+    </script>
+}

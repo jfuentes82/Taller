@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TallerModelStoreContainer" CdmEntityContainer="TallerEntities">
+    <EntitySetMapping Name="Adjunto_Correo">
+      <EntityTypeMapping TypeName="TallerModel.Adjunto_Correo">
+        <MappingFragment StoreEntitySet="Adjunto_Correo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Correo_ID" ColumnName="Correo_ID" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proceso_Correo">
+      <EntityTypeMapping TypeName="TallerModel.Proceso_Correo">
+        <MappingFragment StoreEntitySet="Proceso_Correo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Campo" ColumnName="Campo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

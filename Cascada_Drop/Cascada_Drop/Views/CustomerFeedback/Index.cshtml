@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("CustomerFeedback", "CustomerFeedback", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{ 
+    <div id="dialog" title="Basic dialog">
+        <p>hola</p>
+    </div>
+    <button type="button" id="opener">Open Dialog</button>
+    <button type="submit" id="sub">nada</button>
+    <input id="jaja" title="asdadad" value="Aca" />
+}
+
+@using (Html.BeginForm("", "", FormMethod.Post, new { @class = "modal-form form-horizontal",id="hola" }))
+{
+    @Html.ValidationSummary()
+    <!-- Added hidden field so that these values persist when calling POST Action. Otherwise
+    POST action will have all these properties as null -->
+    
+     @Html.ActionLink("Add Product", "Add", null, new { @class = "dialog button", @title = "Add Product" })
+     @Html.ActionLink("Chao", "Chao", null, new { @class = "dialog button", @title = "Add Product" })
+    
+    
+    
+}
+
+@section Scripts {
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    <script src="~/Scripts/jquery-ui-1.8.24.js"></script>
+    <script src="~/Scripts/Propio.js"></script>
+
+<script type="text/javascript">
+
+    //$(document).on("click", "a.dialog", function (event) {
+    //    event.preventDefault();
+
+    //    var currentLinkRef = this;
+    //    var url = $(this).attr("href");
+    //});
+
+
+    //$(document).ready(function () {
+       
+    //});
+</script>
+    }
